@@ -10,6 +10,12 @@ namespace PiEstimationC
     {
         static void Main(string[] args)
         {
+            FindPiThread test;
+            Console.Write("Number of Throws per thread");
+            Console.Write("Number of Threads: ");
+            Console.ReadLine();
+            A List<Thread>;
+
         }
     }
 }
