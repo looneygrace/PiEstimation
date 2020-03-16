@@ -11,7 +11,7 @@ namespace PiEstimationC
         int numDarts;
         int count;
         Random r;
-        FindPiThread(int num)
+        public FindPiThread(int num)
         {
             numDarts = num;
             count = 0;
