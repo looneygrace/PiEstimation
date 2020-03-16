@@ -21,14 +21,31 @@ namespace PiEstimationC
             Console.Write("Number of Threads: ");
             holder = Console.ReadLine();
             threadsPer = int.Parse(holder);
-
-            List<FindPiThread> list = new List<FindPiThread>();
-            List<Thread> threads = new List<Thread>();
-            FindPiThread piThread = new FindPiThread(throwsPer * threadsPer);
-            list.Append(piThread);
-            threads.Append(new Thread(new ThreadStart(piThread.throwDarts)));
-            threads[0].Start();
-            Thread.Sleep(16);
-                }
-    }
+            int i = 0;
+            List<FindPiThread> list = new List<FindPiThread>(threadsPer);
+            List<Thread> threads = new List<Thread>(threadsPer);
+            while (i < threadsPer)
+            {
+                
+                FindPiThread piThread = new FindPiThread(throwsPer * threadsPer);
+                list.Append(piThread);
+                threads.Append(new Thread(new ThreadStart(piThread.throwDarts)));
+                threads[i].Start();
+                Thread.Sleep(16);
+                i++;
+            }
+            int j = 0;
+            while (j < threadsPer)
+            {
+                threads[j].Join();
+            }
+            int k = 0;
+            int totalNumInside = 0;
+            int total = threadsPer * throwsPer;
+            while(k < threadsPer)
+            {
+                totalNumInside += list[k].getCount();
+            }
+            Console.Write(4*totalNumInside/total);
+        }    }
 }
