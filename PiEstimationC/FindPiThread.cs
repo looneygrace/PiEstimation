@@ -26,7 +26,10 @@ namespace PiEstimationC
             for (int i = 0; i < numDarts; i++)
             {
                 double x = r.NextDouble();
+          
                 double y = r.NextDouble();
+                Console.WriteLine(Math.Sqrt(x * x + y * y));
+                double z = Math.Sqrt(x * x + y * y);
                 if (Math.Sqrt(x * x + y * y) <= 1)
                     { count = count + 1; }
             }
